@@ -128,6 +128,7 @@ module ActsAsGeocodable #:nodoc:
       def location_to_geocode(location)
         case location
         when Geocode then location
+        when Graticule::Location then location
         when ActsAsGeocodable::Model then location.geocode
         when String, Fixnum then Geocode.find_or_create_by_query(location.to_s)
         end
